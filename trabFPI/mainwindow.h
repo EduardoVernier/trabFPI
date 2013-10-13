@@ -34,6 +34,8 @@ private slots:
 
     void on_contrastSlider_sliderReleased();
 
+    void on_calcHistButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QImage modified;

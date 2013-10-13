@@ -36,11 +36,6 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QLineEdit *lineEdit;
-    QPushButton *openButton;
-    QPushButton *saveButton;
-    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QGraphicsView *originalGV;
     QGraphicsView *modifiedGV;
@@ -62,6 +57,15 @@ public:
     QSlider *brightnessSlider;
     QLabel *label_5;
     QSlider *contrastSlider;
+    QGroupBox *groupBox_5;
+    QVBoxLayout *verticalLayout_7;
+    QPushButton *calcHistButton;
+    QPushButton *eqHistButton;
+    QLineEdit *lineEdit;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *openButton;
+    QPushButton *saveButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -70,53 +74,30 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(968, 627);
+        MainWindow->resize(1077, 542);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 10, 941, 25));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-
-        horizontalLayout->addWidget(lineEdit);
-
-        openButton = new QPushButton(layoutWidget);
-        openButton->setObjectName(QStringLiteral("openButton"));
-
-        horizontalLayout->addWidget(openButton);
-
-        saveButton = new QPushButton(layoutWidget);
-        saveButton->setObjectName(QStringLiteral("saveButton"));
-
-        horizontalLayout->addWidget(saveButton);
-
-        layoutWidget1 = new QWidget(centralWidget);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 40, 761, 381));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
+        layoutWidget->setGeometry(QRect(20, 40, 851, 431));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        originalGV = new QGraphicsView(layoutWidget1);
+        originalGV = new QGraphicsView(layoutWidget);
         originalGV->setObjectName(QStringLiteral("originalGV"));
 
         horizontalLayout_2->addWidget(originalGV);
 
-        modifiedGV = new QGraphicsView(layoutWidget1);
+        modifiedGV = new QGraphicsView(layoutWidget);
         modifiedGV->setObjectName(QStringLiteral("modifiedGV"));
 
         horizontalLayout_2->addWidget(modifiedGV);
 
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(790, 40, 161, 94));
+        groupBox->setGeometry(QRect(900, 40, 161, 94));
         verticalLayout_4 = new QVBoxLayout(groupBox);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -133,7 +114,7 @@ public:
 
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(790, 131, 161, 91));
+        groupBox_2->setGeometry(QRect(900, 131, 161, 91));
         verticalLayout_5 = new QVBoxLayout(groupBox_2);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -150,7 +131,7 @@ public:
 
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(790, 219, 161, 61));
+        groupBox_3->setGeometry(QRect(900, 219, 161, 61));
         horizontalLayout_4 = new QHBoxLayout(groupBox_3);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -168,7 +149,7 @@ public:
 
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(790, 278, 161, 101));
+        groupBox_4->setGeometry(QRect(900, 278, 161, 101));
         verticalLayout_6 = new QVBoxLayout(groupBox_4);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -201,10 +182,48 @@ public:
 
         verticalLayout_6->addWidget(contrastSlider);
 
+        groupBox_5 = new QGroupBox(centralWidget);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        groupBox_5->setGeometry(QRect(900, 376, 161, 91));
+        verticalLayout_7 = new QVBoxLayout(groupBox_5);
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        calcHistButton = new QPushButton(groupBox_5);
+        calcHistButton->setObjectName(QStringLiteral("calcHistButton"));
+
+        verticalLayout_7->addWidget(calcHistButton);
+
+        eqHistButton = new QPushButton(groupBox_5);
+        eqHistButton->setObjectName(QStringLiteral("eqHistButton"));
+
+        verticalLayout_7->addWidget(eqHistButton);
+
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(20, 10, 851, 23));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(900, 10, 168, 25));
+        horizontalLayout_3 = new QHBoxLayout(widget);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        openButton = new QPushButton(widget);
+        openButton->setObjectName(QStringLiteral("openButton"));
+
+        horizontalLayout_3->addWidget(openButton);
+
+        saveButton = new QPushButton(widget);
+        saveButton->setObjectName(QStringLiteral("saveButton"));
+
+        horizontalLayout_3->addWidget(saveButton);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 968, 20));
+        menuBar->setGeometry(QRect(0, 0, 1077, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -221,9 +240,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        lineEdit->setText(QApplication::translate("MainWindow", "/home/eduardo/Pictures/", 0));
-        openButton->setText(QApplication::translate("MainWindow", "Open", 0));
-        saveButton->setText(QApplication::translate("MainWindow", "Save as", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "Flips", 0));
         hFlip->setText(QApplication::translate("MainWindow", "Horizonal Flip", 0));
         vFlip->setText(QApplication::translate("MainWindow", "Vertical Flip", 0));
@@ -235,6 +251,12 @@ public:
         groupBox_4->setTitle(QApplication::translate("MainWindow", "Adjustments", 0));
         label_4->setText(QApplication::translate("MainWindow", "Brightness:", 0));
         label_5->setText(QApplication::translate("MainWindow", "Contrast", 0));
+        groupBox_5->setTitle(QApplication::translate("MainWindow", "Histogram", 0));
+        calcHistButton->setText(QApplication::translate("MainWindow", "Calculate", 0));
+        eqHistButton->setText(QApplication::translate("MainWindow", "Equalize", 0));
+        lineEdit->setText(QString());
+        openButton->setText(QApplication::translate("MainWindow", "Open", 0));
+        saveButton->setText(QApplication::translate("MainWindow", "Save as", 0));
     } // retranslateUi
 
 };

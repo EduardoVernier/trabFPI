@@ -114,6 +114,8 @@ void MainWindow::on_quatizeButton_clicked()
 {
     int nShades = ui->nShades->value();
     int red,green,blue;
+    on_grayscaleButton_clicked();
+
 
     QImage m = getModified();
     if (nShades > 0)
@@ -233,16 +235,27 @@ void MainWindow::on_brightnessSlider_sliderReleased()
 }
 
 
+// -4    -3    -2     -1    0 1 2 3 4
+// 1/5   1/4     1/3    1/2  1 2 3 4 5
 void MainWindow::on_contrastSlider_sliderReleased()
 {
     QImage m = getModified();
     float value;
     int sliderValue = ui->contrastSlider->value();
-    if (sliderValue == 0)
-        return;
-    if (sliderValue<1)
-        value = 1.0/(-sliderValue);
-    else value = sliderValue;
+
+    switch (sliderValue)
+    {
+    case -4 : value = 1.0/5;  break;
+    case -3 : value = 1.0/4;  break;
+    case -2 : value = 1.0/3;  break;
+    case -1 : value = 1.0/2;  break;
+    case 0 : value = 1.0;  break;
+    case 1 : value = 2.0;  break;
+    case 2 : value = 3.0;  break;
+    case 3 : value = 4.0;  break;
+    case 4 : value = 5.0;  break;
+    }
+
 
 
 
@@ -285,23 +298,40 @@ void MainWindow::on_contrastSlider_sliderReleased()
 
 
 
+void MainWindow::on_calcHistButton_clicked()
+{
+    on_grayscaleButton_clicked();
+    QImage m = getModified();
+    QRgb px, blue;
+    int histogram [256], max=0;
+    blue  = qRgb (0,0,255);
+
+    {
+        for (int i =0; i<256 ; i++)
+            histogram [i] = 0;
 
 
+        for (int y = 0; y < m.height()-1; y++)
+            for (int x = 0; x < m.width()-1; x++)
+            {
+                px = m.pixel (x,y);
+                histogram [qRed(px)]++;
+                if (histogram[qRed(px)]>max)
+                    max = histogram[qRed(px)];
+            }
+        showImageO(m);
+        QImage n (256,110,QImage::Format_RGB32);
 
 
+        for (int x = 0; x < 256; x++)
+        {
 
+            int y = 110 - ((100*histogram[x])/max+1);
+            for (int i = y; i < 109; i++)
+                n.setPixel(x,i, blue);
+        }
+        showImageO(n);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+}
 
