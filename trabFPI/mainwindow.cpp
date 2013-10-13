@@ -297,7 +297,6 @@ void MainWindow::on_contrastSlider_sliderReleased()
 }
 
 
-
 void MainWindow::on_calcHistButton_clicked()
 {
     on_grayscaleButton_clicked();
@@ -320,14 +319,14 @@ void MainWindow::on_calcHistButton_clicked()
                     max = histogram[qRed(px)];
             }
         showImageO(m);
-        QImage n (256,110,QImage::Format_RGB32);
+        QImage n (256,256,QImage::Format_RGB32);
 
 
         for (int x = 0; x < 256; x++)
         {
 
-            int y = 110 - ((100*histogram[x])/max+1);
-            for (int i = y; i < 109; i++)
+            int y = 256 - ((255*histogram[x])/max+1);
+            for (int i = y; i < 240; i++)
                 n.setPixel(x,i, blue);
         }
         showImageO(n);
@@ -335,3 +334,52 @@ void MainWindow::on_calcHistButton_clicked()
     }
 }
 
+
+void MainWindow::on_eqHistButton_clicked()
+{
+    QImage m = getModified();
+    QRgb px,newPx;
+    int nRed, nGreen, nBlue;
+    int histogram [3][256];
+
+    for (int j = 0; j < 3; j++)
+        for (int i =0; i < 256 ; i++)
+            histogram [j][i] = 0;
+
+
+    for (int y = 0; y < m.height()-1; y++)
+        for (int x = 0; x < m.width()-1; x++)
+        {
+            px = m.pixel (x,y);
+            histogram [0][qRed(px)]++;
+            histogram [1][qGreen(px)]++;
+            histogram [2][qBlue(px)]++;
+        }
+
+    for (int i = 1; i < 256; i++)
+    {
+        histogram [0][i] = histogram [0][i] + histogram [0][i-1];
+        histogram [1][i] = histogram [1][i] + histogram [1][i-1];
+        histogram [2][i] = histogram [2][i] + histogram [2][i-1];
+    }
+
+    for (int y = 0; y < m.height()-1; y++)
+        for (int x = 0; x < m.width()-1; x++)
+        {
+            px = m.pixel (x,y);
+
+            nRed = (histogram [0][qRed(px)])*(255.0/(m.height()*m.width()));
+            nGreen = (histogram [1][qGreen(px)])*(255.0/(m.height()*m.width()));
+            nBlue = (histogram [2][qGreen(px)])*(255.0/(m.height()*m.width()));
+
+            newPx = qRgb (nRed,nGreen,nBlue);
+
+            m.setPixel(x,y,newPx);
+
+        }
+    setModified(m);
+    showImageM(m);
+
+
+
+}

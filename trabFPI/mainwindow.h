@@ -36,6 +36,8 @@ private slots:
 
     void on_calcHistButton_clicked();
 
+    void on_eqHistButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QImage modified;
