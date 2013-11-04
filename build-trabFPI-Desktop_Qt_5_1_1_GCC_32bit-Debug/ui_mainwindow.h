@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -24,7 +25,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -43,6 +43,8 @@ public:
     QVBoxLayout *verticalLayout_4;
     QPushButton *hFlip;
     QPushButton *vFlip;
+    QPushButton *cwRotateButton;
+    QPushButton *ccwRotateButton;
     QGroupBox *groupBox_2;
     QVBoxLayout *verticalLayout_5;
     QPushButton *grayscaleButton;
@@ -62,24 +64,29 @@ public:
     QPushButton *calcHistButton;
     QPushButton *eqHistButton;
     QLineEdit *lineEdit;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *openButton;
     QPushButton *saveButton;
+    QCheckBox *fitCheck;
+    QGroupBox *groupBox_6;
+    QVBoxLayout *verticalLayout_8;
+    QPushButton *zInButton;
+    QPushButton *zOutButtton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1077, 542);
+        MainWindow->resize(1124, 665);
+        MainWindow->setStyleSheet(QStringLiteral("border-color: rgb(0, 0, 0);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 40, 851, 431));
+        layoutWidget->setGeometry(QRect(20, 40, 921, 561));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -97,7 +104,8 @@ public:
 
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(900, 40, 161, 94));
+        groupBox->setGeometry(QRect(960, 40, 161, 151));
+        groupBox->setStyleSheet(QStringLiteral("border-color: rgb(0, 0, 0);"));
         verticalLayout_4 = new QVBoxLayout(groupBox);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -112,9 +120,19 @@ public:
 
         verticalLayout_4->addWidget(vFlip);
 
+        cwRotateButton = new QPushButton(groupBox);
+        cwRotateButton->setObjectName(QStringLiteral("cwRotateButton"));
+
+        verticalLayout_4->addWidget(cwRotateButton);
+
+        ccwRotateButton = new QPushButton(groupBox);
+        ccwRotateButton->setObjectName(QStringLiteral("ccwRotateButton"));
+
+        verticalLayout_4->addWidget(ccwRotateButton);
+
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(900, 131, 161, 91));
+        groupBox_2->setGeometry(QRect(960, 183, 161, 90));
         verticalLayout_5 = new QVBoxLayout(groupBox_2);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -131,7 +149,7 @@ public:
 
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(900, 219, 161, 61));
+        groupBox_3->setGeometry(QRect(960, 271, 161, 60));
         horizontalLayout_4 = new QHBoxLayout(groupBox_3);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -149,7 +167,7 @@ public:
 
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(900, 278, 161, 101));
+        groupBox_4->setGeometry(QRect(960, 330, 161, 100));
         verticalLayout_6 = new QVBoxLayout(groupBox_4);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -184,7 +202,7 @@ public:
 
         groupBox_5 = new QGroupBox(centralWidget);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        groupBox_5->setGeometry(QRect(900, 376, 161, 91));
+        groupBox_5->setGeometry(QRect(960, 428, 161, 90));
         verticalLayout_7 = new QVBoxLayout(groupBox_5);
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
@@ -201,36 +219,54 @@ public:
 
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(20, 10, 851, 23));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(900, 10, 168, 25));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        lineEdit->setGeometry(QRect(20, 10, 921, 23));
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(970, 9, 141, 25));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        openButton = new QPushButton(widget);
+        openButton = new QPushButton(layoutWidget1);
         openButton->setObjectName(QStringLiteral("openButton"));
 
         horizontalLayout_3->addWidget(openButton);
 
-        saveButton = new QPushButton(widget);
+        saveButton = new QPushButton(layoutWidget1);
         saveButton->setObjectName(QStringLiteral("saveButton"));
 
         horizontalLayout_3->addWidget(saveButton);
 
+        fitCheck = new QCheckBox(centralWidget);
+        fitCheck->setObjectName(QStringLiteral("fitCheck"));
+        fitCheck->setGeometry(QRect(18, 610, 151, 21));
+        fitCheck->setChecked(true);
+        groupBox_6 = new QGroupBox(centralWidget);
+        groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
+        groupBox_6->setGeometry(QRect(960, 515, 161, 90));
+        verticalLayout_8 = new QVBoxLayout(groupBox_6);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        zInButton = new QPushButton(groupBox_6);
+        zInButton->setObjectName(QStringLiteral("zInButton"));
+
+        verticalLayout_8->addWidget(zInButton);
+
+        zOutButtton = new QPushButton(groupBox_6);
+        zOutButtton->setObjectName(QStringLiteral("zOutButtton"));
+
+        verticalLayout_8->addWidget(zOutButtton);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1077, 20));
+        menuBar->setGeometry(QRect(0, 0, 1124, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
 
@@ -240,9 +276,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Flips", 0));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Flips/Rotate", 0));
         hFlip->setText(QApplication::translate("MainWindow", "Horizonal Flip", 0));
         vFlip->setText(QApplication::translate("MainWindow", "Vertical Flip", 0));
+        cwRotateButton->setText(QApplication::translate("MainWindow", "Rotate Clockwise", 0));
+        ccwRotateButton->setText(QApplication::translate("MainWindow", "Counterclockwise", 0));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Convert to", 0));
         grayscaleButton->setText(QApplication::translate("MainWindow", "Grayscale", 0));
         negativeButton->setText(QApplication::translate("MainWindow", "Negative", 0));
@@ -257,6 +295,10 @@ public:
         lineEdit->setText(QString());
         openButton->setText(QApplication::translate("MainWindow", "Open", 0));
         saveButton->setText(QApplication::translate("MainWindow", "Save as", 0));
+        fitCheck->setText(QApplication::translate("MainWindow", "Fit into frame", 0));
+        groupBox_6->setTitle(QApplication::translate("MainWindow", "Zoom", 0));
+        zInButton->setText(QApplication::translate("MainWindow", "Zoom In", 0));
+        zOutButtton->setText(QApplication::translate("MainWindow", "Zoom Out", 0));
     } // retranslateUi
 
 };

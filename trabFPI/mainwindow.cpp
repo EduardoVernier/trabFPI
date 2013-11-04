@@ -9,9 +9,7 @@
 using namespace std;
 QString local;
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     lastBrightnessValue = 0;
     ui->setupUi(this);
@@ -24,7 +22,7 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::inicializeImages()
-{
+{   
     QImage original (local);
     QImage modified (original.width(), original.height(), QImage::Format_RGB32);
 
@@ -50,7 +48,11 @@ QImage MainWindow::getModified()
 
 void MainWindow::showImageM(QImage m)
 {
-    QImage resized = m.scaled (ui->modifiedGV->width()-3,ui->modifiedGV->height()-3,Qt::KeepAspectRatio);
+    QImage resized;
+    if (ui->fitCheck->isChecked()==1)
+        resized = m.scaled (ui->modifiedGV->width()-3,ui->modifiedGV->height()-3,Qt::KeepAspectRatio);
+    else
+        resized = m;
 
     QGraphicsScene *toBeShown = new QGraphicsScene();
     toBeShown->addPixmap(QPixmap::fromImage(resized));
@@ -59,7 +61,11 @@ void MainWindow::showImageM(QImage m)
 
 void MainWindow::showImageO(QImage m)
 {
-    QImage resized = m.scaled (ui->originalGV->width()-3,ui->originalGV->height()-3,Qt::KeepAspectRatio);
+    QImage resized;
+    if (ui->fitCheck->isChecked()==1)
+        resized = m.scaled (ui->modifiedGV->width()-3,ui->modifiedGV->height()-3,Qt::KeepAspectRatio);
+    else
+        resized = m;
 
     QGraphicsScene *toBeShown = new QGraphicsScene();
     toBeShown->addPixmap(QPixmap::fromImage(resized));
@@ -329,6 +335,7 @@ void MainWindow::on_calcHistButton_clicked()
             for (int i = y; i < 240; i++)
                 n.setPixel(x,i, blue);
         }
+        ui->originalGV->scene()->clear();
         showImageO(n);
 
     }
@@ -370,7 +377,7 @@ void MainWindow::on_eqHistButton_clicked()
 
             nRed = (histogram [0][qRed(px)])*(255.0/(m.height()*m.width()));
             nGreen = (histogram [1][qGreen(px)])*(255.0/(m.height()*m.width()));
-            nBlue = (histogram [2][qGreen(px)])*(255.0/(m.height()*m.width()));
+            nBlue = (histogram [2][qBlue(px)])*(255.0/(m.height()*m.width()));
 
             newPx = qRgb (nRed,nGreen,nBlue);
 
@@ -379,7 +386,75 @@ void MainWindow::on_eqHistButton_clicked()
         }
     setModified(m);
     showImageM(m);
+}
 
 
 
+void MainWindow::on_cwRotateButton_clicked()
+{
+    QImage m = getModified();
+    QImage newImage (m.height(),m.width(),  QImage::Format_RGB32);
+
+    for (int i = 0; i < m.width(); i++)
+        for (int j = 0; j < m.height();j++)
+        {
+            QRgb orValue = m.pixel(i,j);
+            newImage.setPixel(m.height()-j-1,i,orValue);
+        }
+
+    setModified(newImage);
+    showImageM(newImage);
+}
+
+
+void MainWindow::on_ccwRotateButton_clicked()
+{
+    QImage m = getModified();
+    QImage newImage (m.height(),m.width(),  QImage::Format_RGB32);
+
+    for (int i = 0; i < m.width(); i++)
+        for (int j = 0; j < m.height();j++)
+        {
+            QRgb orValue = m.pixel(i,j);
+            newImage.setPixel(j,m.width()-1-i,orValue);
+        }
+
+    setModified(newImage);
+    showImageM(newImage);
+}
+
+void MainWindow::on_zInButton_clicked()
+{
+    QImage m = getModified();
+    QImage newImage (m.height()*2,m.width()*2,  QImage::Format_RGB32);
+
+    for (int x = 0, xNew = 0; x < m.width(); x++, xNew = xNew + 2)
+        for (int y = 0, yNew =0; y < m.height();y++, yNew = yNew +2)
+        {
+            QRgb px = m.pixel(x,y);
+            newImage.setPixel(xNew,yNew, px);
+        }
+
+    for (int xNew = 1; xNew < newImage.width()-2; xNew = xNew + 2)
+        for (int y = 0; y < newImage.height(); y++)
+        {
+            QRgb px = newImage.pixel(xNew-1,y);
+            QRgb nextPx = newImage.pixel(xNew+1,y);
+            QRgb newPx = qRgb ( (qRed(px)+qRed(nextPx))/2, (qGreen(px)+qGreen(nextPx))/2 , (qBlue(px)+qBlue(nextPx))/2);
+
+            newImage.setPixel(xNew,y, newPx);
+        }
+
+    for (int x = 0; x < newImage.width(); x++)
+        for (int yNew = 1; yNew < newImage.height()-2; yNew = yNew + 2)
+        {
+            QRgb px = newImage.pixel(x,yNew-1);
+            QRgb nextPx = newImage.pixel(x,yNew+1);
+            QRgb newPx = qRgb ( (qRed(px)+qRed(nextPx))/2, (qGreen(px)+qGreen(nextPx))/2 , (qBlue(px)+qBlue(nextPx))/2);
+
+            newImage.setPixel(x,yNew, newPx);
+        }
+
+    setModified(newImage);
+    showImageM(newImage);
 }

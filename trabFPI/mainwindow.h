@@ -38,6 +38,16 @@ private slots:
 
     void on_eqHistButton_clicked();
 
+
+    
+    void on_pushButton_clicked();
+
+    void on_cwRotateButton_clicked();
+
+    void on_ccwRotateButton_clicked();
+
+    void on_zInButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QImage modified;
