@@ -426,17 +426,17 @@ void MainWindow::on_ccwRotateButton_clicked()
 void MainWindow::on_zInButton_clicked()
 {
     QImage m = getModified();
-    QImage newImage (m.height()*2,m.width()*2,  QImage::Format_RGB32);
+    QImage newImage (m.width()*2-1,m.height()*2-1,  QImage::Format_RGB32);
 
-    for (int x = 0, xNew = 0; x < m.width(); x++, xNew = xNew + 2)
-        for (int y = 0, yNew =0; y < m.height();y++, yNew = yNew +2)
+    for (int x = 0, xNew = 0; x <= m.width(); x++, xNew = xNew + 2)
+        for (int y = 0, yNew =0; y <= m.height();y++, yNew = yNew +2)
         {
             QRgb px = m.pixel(x,y);
             newImage.setPixel(xNew,yNew, px);
         }
 
-    for (int xNew = 1; xNew < newImage.width()-2; xNew = xNew + 2)
-        for (int y = 0; y < newImage.height(); y++)
+    for (int xNew = 1; xNew <= newImage.width()-2; xNew = xNew + 2)
+        for (int y = 0; y <= newImage.height(); y++)
         {
             QRgb px = newImage.pixel(xNew-1,y);
             QRgb nextPx = newImage.pixel(xNew+1,y);
@@ -445,8 +445,8 @@ void MainWindow::on_zInButton_clicked()
             newImage.setPixel(xNew,y, newPx);
         }
 
-    for (int x = 0; x < newImage.width(); x++)
-        for (int yNew = 1; yNew < newImage.height()-2; yNew = yNew + 2)
+    for (int x = 0; x <=newImage.width(); x++)
+        for (int yNew = 1; yNew <= newImage.height(); yNew = yNew + 2)
         {
             QRgb px = newImage.pixel(x,yNew-1);
             QRgb nextPx = newImage.pixel(x,yNew+1);
@@ -459,6 +459,41 @@ void MainWindow::on_zInButton_clicked()
     showImageM(newImage);
 }
 
+void MainWindow::on_zOutButtton_clicked()
+{
+    QImage m = getModified();
+    float xV = ui->spinBox->value();
+    float yV = ui->spinBox_2->value();
+    int xD = m.width()/xV;
+    int yD = m.height()/yV;
+    QImage n (xD, yD, QImage::Format_RGB32);
+
+    for (int x = 0; x < xD; x++)
+        for (int y = 0; y < yD; y++)
+        {
+            int avgRed = 0, avgGreen = 0, avgBlue = 0;
+            for (int i = 0; i < xV; i++)
+                for (int j = 0; j < yV; j++)
+                {
+                    QRgb avgPx = m.pixel(x*xV + i, y*yV + j);
+                    avgRed += qRed (avgPx)/ (xV*yV);
+                    avgGreen += qGreen (avgPx)/ (xV*yV);
+                    avgBlue += qBlue (avgPx)/ (xV*yV);
+
+                }
+
+            QRgb newPx = qRgb (avgRed,avgGreen,avgBlue);
+            n.setPixel(x,y,newPx);
+        }
+
+    setModified(n);
+    showImageM(n);
+
+
+
+}
+
+
 void MainWindow::on_filterButton_clicked()
 {
     this->chooseFilter();
@@ -467,10 +502,13 @@ void MainWindow::on_filterButton_clicked()
 
 void MainWindow::on_applyGaussian ()
 {
-    applyFilter(1,1);
+    float values [9] = {};
+    applyFilter(values);
 }
 
-void MainWindow::applyFilter (float a11, float a22)
+void MainWindow::applyFilter (float * values)
 {
     on_eqHistButton_clicked();
 }
+
+

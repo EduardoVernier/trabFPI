@@ -20,7 +20,7 @@ public:
     void inicializeImages();
     ~MainWindow();
     QString location;
-    void applyFilter (float a11, float a22);
+    void applyFilter (float * values);
 
 private slots:
     void on_hFlip_clicked();
@@ -39,6 +39,8 @@ private slots:
     void on_ccwRotateButton_clicked();
     void on_zInButton_clicked();
     void on_filterButton_clicked();
+    void on_zOutButtton_clicked();
+
 
 public slots:
     void on_applyGaussian ();

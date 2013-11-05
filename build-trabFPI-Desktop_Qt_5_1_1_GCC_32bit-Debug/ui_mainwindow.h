@@ -255,11 +255,13 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         spinBox = new QSpinBox(groupBox_6);
         spinBox->setObjectName(QStringLiteral("spinBox"));
+        spinBox->setMinimum(1);
 
         horizontalLayout->addWidget(spinBox);
 
         spinBox_2 = new QSpinBox(groupBox_6);
         spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
+        spinBox_2->setMinimum(1);
 
         horizontalLayout->addWidget(spinBox_2);
 

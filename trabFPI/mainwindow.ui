@@ -293,10 +293,18 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QSpinBox" name="spinBox"/>
+        <widget class="QSpinBox" name="spinBox">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="spinBox_2"/>
+        <widget class="QSpinBox" name="spinBox_2">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
