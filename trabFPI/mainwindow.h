@@ -20,6 +20,7 @@ public:
     void inicializeImages();
     ~MainWindow();
     QString location;
+    void applyFilter (float a11, float a22);
 
 private slots:
     void on_hFlip_clicked();
@@ -29,30 +30,26 @@ private slots:
     void on_saveButton_clicked();
     void on_grayscaleButton_clicked();
     void on_brightnessSlider_sliderReleased();
-
     void on_negativeButton_clicked();
-
     void on_contrastSlider_sliderReleased();
-
     void on_calcHistButton_clicked();
-
-    void on_eqHistButton_clicked();
-
-
-    
+    void on_eqHistButton_clicked();    
     void on_pushButton_clicked();
-
     void on_cwRotateButton_clicked();
-
     void on_ccwRotateButton_clicked();
-
     void on_zInButton_clicked();
+    void on_filterButton_clicked();
+
+public slots:
+    void on_applyGaussian ();
 
 private:
     Ui::MainWindow *ui;
     QImage modified;
     int lastBrightnessValue;
-    QImage undoImage;
+
+signals:
+    bool chooseFilter();
 };
 
 #endif // MAINWINDOW_H

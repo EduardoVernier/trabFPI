@@ -458,3 +458,19 @@ void MainWindow::on_zInButton_clicked()
     setModified(newImage);
     showImageM(newImage);
 }
+
+void MainWindow::on_filterButton_clicked()
+{
+    this->chooseFilter();
+
+}
+
+void MainWindow::on_applyGaussian ()
+{
+    applyFilter(1,1);
+}
+
+void MainWindow::applyFilter (float a11, float a22)
+{
+    on_eqHistButton_clicked();
+}
