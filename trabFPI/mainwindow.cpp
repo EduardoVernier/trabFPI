@@ -9,6 +9,7 @@
 using namespace std;
 QString local;
 
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     lastBrightnessValue = 0;
@@ -488,9 +489,6 @@ void MainWindow::on_zOutButtton_clicked()
 
     setModified(n);
     showImageM(n);
-
-
-
 }
 
 
@@ -500,15 +498,53 @@ void MainWindow::on_filterButton_clicked()
 
 }
 
-void MainWindow::on_applyGaussian ()
-{
-    float values [9] = {};
-    applyFilter(values);
-}
 
 void MainWindow::applyFilter (float * values)
 {
-    on_eqHistButton_clicked();
+    // 180º rotation
+    // values   [0]       [1]      [2]        [3]       [4]      [5]        [6]       [7]      [8]
+    //       (x+1,y+1)  (x,y+1)  (x-1,y+1)  (x+1,y)    (x,y)    (x-1,y)   (x+1,y-1)  (x,y-1)  (x-1,y-1)
+
+    on_grayscaleButton_clicked();
+    QImage m = getModified();
+    QImage n = getModified();
+
+    for (int x = 1; x < (m.width()-1); x++)
+        for (int y = 1; y < (m.height()-1); y++)
+        {
+            int newValue = 0;
+            // Se newValue < 0, entao newValue recebe 0, senao newValue recebe newValue
+            newValue += qRed(m.pixel(x+1, y+1)) * values [0]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x, y+1))   * values [1]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x-1, y+1)) * values [2]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x+1,   y)) * values [3]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x,     y)) * values [4]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x-1,   y)) * values [5]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x+1, y-1)) * values [6]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x   ,y-1)) * values [7]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x-1, y-1)) * values [8]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            QRgb newPx = qRgb (newValue, newValue, newValue);
+            n.setPixel(x, y, newPx);
+        }
+    setModified(n);
+    showImageM(n);
+
 }
 
+
+void MainWindow::on_applyGaussian ()
+{
+    float values [9] = {0.0625, 0.125, 0.0625,
+                        0.125,  0.25,  0.125,
+                        0.0625, 0.125, 0.0625};
+    applyFilter(values);
+}
+
+void MainWindow::on_applyLaplassian ()
+{
+    float values [9] = { 0, -1,   0,
+                        -1,  4,  -1,
+                         0, -1,   0};
+    applyFilter(values);
+}
 

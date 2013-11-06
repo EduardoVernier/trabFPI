@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
     QObject::connect(&w, SIGNAL(chooseFilter()), &f, SLOT(show()));
 
     // Selects a given filter in the widget and connects to a slot in the main window
-    QObject::connect(&f, SIGNAL(appyGaussian()), &w, SLOT(on_applyGaussian()));
+    QObject::connect(&f, SIGNAL(applyGaussian()), &w, SLOT(on_applyGaussian()));
+    QObject::connect(&f, SIGNAL(applyLaplassian()), &w, SLOT(on_applyLaplassian()));
 
     w.show();
 

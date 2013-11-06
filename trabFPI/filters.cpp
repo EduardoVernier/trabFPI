@@ -15,5 +15,10 @@ Filters::~Filters()
 
 void Filters::on_gaussianButton_clicked()
 {
-    this->appyGaussian();
+    this->applyGaussian();
+}
+
+void Filters::on_laplassianButton_clicked()
+{
+    this->applyLaplassian();
 }

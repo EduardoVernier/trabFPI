@@ -44,6 +44,7 @@ private slots:
 
 public slots:
     void on_applyGaussian ();
+    void on_applyLaplassian ();
 
 private:
     Ui::MainWindow *ui;

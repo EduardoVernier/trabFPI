@@ -19,9 +19,12 @@ private:
     Ui::Filters *ui;
 
 signals:
-    bool appyGaussian ();
+    bool applyGaussian ();
+    bool applyLaplassian ();
+
 private slots:
     void on_gaussianButton_clicked();
+    void on_laplassianButton_clicked();
 };
 
 #endif // FILTERS_H
