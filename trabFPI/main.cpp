@@ -14,7 +14,11 @@ int main(int argc, char *argv[])
 
     // Selects a given filter in the widget and connects to a slot in the main window
     QObject::connect(&f, SIGNAL(applyGaussian()), &w, SLOT(on_applyGaussian()));
-    QObject::connect(&f, SIGNAL(applyLaplassian()), &w, SLOT(on_applyLaplassian()));
+    QObject::connect(&f, SIGNAL(applyLaplacian()), &w, SLOT(on_applyLaplacian()));
+    QObject::connect(&f, SIGNAL(applyHP()), &w, SLOT(on_applyHighPass()));
+    QObject::connect(&f, SIGNAL(applyPHx()), &w, SLOT(on_applyPHx()));
+    QObject::connect(&f, SIGNAL(applyPHyHx()), &w, SLOT(on_applyPHyHx()));
+
 
     w.show();
 

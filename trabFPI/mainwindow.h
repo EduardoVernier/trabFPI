@@ -43,8 +43,12 @@ private slots:
 
 
 public slots:
+    void on_applyPHx();
     void on_applyGaussian ();
-    void on_applyLaplassian ();
+    void on_applyLaplacian ();
+    void on_applyHighPass ();
+    void on_applyPHyHx();
+
 
 private:
     Ui::MainWindow *ui;

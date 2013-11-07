@@ -18,7 +18,22 @@ void Filters::on_gaussianButton_clicked()
     this->applyGaussian();
 }
 
-void Filters::on_laplassianButton_clicked()
+void Filters::on_LaplacianButton_clicked()
 {
-    this->applyLaplassian();
+    this->applyLaplacian();
+}
+
+void Filters::on_hPButton_clicked()
+{
+    this->applyHP();
+}
+
+void Filters::on_pHxButton_clicked()
+{
+    this->applyPHx();
+}
+
+void Filters::on_pHyHxButton_clicked()
+{
+    this->applyPHyHx();
 }

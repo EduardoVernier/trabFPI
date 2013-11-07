@@ -514,14 +514,14 @@ void MainWindow::applyFilter (float * values)
         {
             int newValue = 0;
             // Se newValue < 0, entao newValue recebe 0, senao newValue recebe newValue
-            newValue += qRed(m.pixel(x+1, y+1)) * values [0]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x, y+1))   * values [1]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x-1, y+1)) * values [2]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x+1,   y)) * values [3]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x,     y)) * values [4]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x-1,   y)) * values [5]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x+1, y-1)) * values [6]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
-            newValue += qRed(m.pixel(x   ,y-1)) * values [7]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x+1, y+1)) * values [0]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x, y+1))   * values [1]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x-1, y+1)) * values [2]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x+1,   y)) * values [3]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x,     y)) * values [4]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x-1,   y)) * values [5]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x+1, y-1)) * values [6]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
+            newValue += qRed(m.pixel(x   ,y-1)) * values [7]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
             newValue += qRed(m.pixel(x-1, y-1)) * values [8]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
             QRgb newPx = qRgb (newValue, newValue, newValue);
             n.setPixel(x, y, newPx);
@@ -540,11 +540,36 @@ void MainWindow::on_applyGaussian ()
     applyFilter(values);
 }
 
-void MainWindow::on_applyLaplassian ()
+void MainWindow::on_applyLaplacian ()
 {
     float values [9] = { 0, -1,   0,
                         -1,  4,  -1,
                          0, -1,   0};
     applyFilter(values);
 }
+
+void MainWindow::on_applyHighPass ()
+{
+    float values [9] = { -1, -1, -1,
+                         -1,  8, -1,
+                         -1, -1, -1};
+    applyFilter(values);
+}
+
+void MainWindow::on_applyPHx ()
+{
+    float values [9] = { -1, 0, 1,
+                         -1, 0, 1,
+                         -1, 0, 1};
+    applyFilter(values);
+}
+
+void MainWindow::on_applyPHyHx ()
+{
+    float values [9] = { -1, -1, -1,
+                          0,  0, 0,
+                          1,  1, 1};
+    applyFilter(values);
+}
+
 

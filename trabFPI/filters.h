@@ -20,11 +20,17 @@ private:
 
 signals:
     bool applyGaussian ();
-    bool applyLaplassian ();
+    bool applyLaplacian ();
+    bool applyHP();
+    bool applyPHx();
+    bool applyPHyHx();
 
 private slots:
     void on_gaussianButton_clicked();
-    void on_laplassianButton_clicked();
+    void on_LaplacianButton_clicked();
+    void on_hPButton_clicked();
+    void on_pHxButton_clicked();
+    void on_pHyHxButton_clicked();
 };
 
 #endif // FILTERS_H

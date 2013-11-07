@@ -28,7 +28,7 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QPushButton *gaussianButton;
-    QPushButton *laplassianButton;
+    QPushButton *LaplacianButton;
     QPushButton *hPButton;
     QPushButton *pHxButton;
     QPushButton *pHyHxButton;
@@ -54,7 +54,7 @@ public:
         Filters->resize(170, 358);
         layoutWidget = new QWidget(Filters);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 26, 151, 191));
+        layoutWidget->setGeometry(QRect(10, 26, 151, 181));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -63,10 +63,10 @@ public:
 
         verticalLayout->addWidget(gaussianButton);
 
-        laplassianButton = new QPushButton(layoutWidget);
-        laplassianButton->setObjectName(QStringLiteral("laplassianButton"));
+        LaplacianButton = new QPushButton(layoutWidget);
+        LaplacianButton->setObjectName(QStringLiteral("LaplacianButton"));
 
-        verticalLayout->addWidget(laplassianButton);
+        verticalLayout->addWidget(LaplacianButton);
 
         hPButton = new QPushButton(layoutWidget);
         hPButton->setObjectName(QStringLiteral("hPButton"));
@@ -157,7 +157,7 @@ public:
     {
         Filters->setWindowTitle(QApplication::translate("Filters", "Form", 0));
         gaussianButton->setText(QApplication::translate("Filters", "Gaussian", 0));
-        laplassianButton->setText(QApplication::translate("Filters", "Laplassian", 0));
+        LaplacianButton->setText(QApplication::translate("Filters", "Laplacian", 0));
         hPButton->setText(QApplication::translate("Filters", "High-pass Filter", 0));
         pHxButton->setText(QApplication::translate("Filters", "Prewitt Hx", 0));
         pHyHxButton->setText(QApplication::translate("Filters", "Prewitt Hy Hx", 0));

@@ -19,7 +19,7 @@
      <x>10</x>
      <y>26</y>
      <width>151</width>
-     <height>191</height>
+     <height>181</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -31,9 +31,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="laplassianButton">
+     <widget class="QPushButton" name="LaplacianButton">
       <property name="text">
-       <string>Laplassian</string>
+       <string>Laplacian</string>
       </property>
      </widget>
     </item>
