@@ -10,8 +10,11 @@
     <height>378</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>FIlters</string>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">

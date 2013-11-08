@@ -5,6 +5,7 @@ Filters::Filters(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Filters)
 {
+    setWindowFlags(Qt::WindowStaysOnTopHint);
     ui->setupUi(this);
 }
 

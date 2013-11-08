@@ -177,7 +177,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->on_contrastSlider_sliderReleased(); break;
         case 10: _t->on_calcHistButton_clicked(); break;
         case 11: _t->on_eqHistButton_clicked(); break;
-        //case 12: _t->on_pushButton_clicked(); break;
+     //   case 12: _t->on_pushButton_clicked(); break;
         case 13: _t->on_cwRotateButton_clicked(); break;
         case 14: _t->on_ccwRotateButton_clicked(); break;
         case 15: _t->on_zInButton_clicked(); break;

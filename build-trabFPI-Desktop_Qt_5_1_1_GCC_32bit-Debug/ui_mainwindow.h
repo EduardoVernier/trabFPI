@@ -82,6 +82,7 @@ public:
     QVBoxLayout *verticalLayout_9;
     QPushButton *filterButton;
     QCheckBox *fitCheck;
+    QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
 
@@ -308,6 +309,12 @@ public:
         fitCheck->setObjectName(QStringLiteral("fitCheck"));
         fitCheck->setGeometry(QRect(935, 3, 121, 16));
         fitCheck->setChecked(true);
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(20, 665, 141, 16));
+        QFont font;
+        font.setPointSize(7);
+        label->setFont(font);
         MainWindow->setCentralWidget(centralWidget);
         layoutWidget->raise();
         groupBox->raise();
@@ -320,6 +327,7 @@ public:
         groupBox_6->raise();
         groupBox_7->raise();
         fitCheck->raise();
+        label->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1241, 20));
@@ -335,7 +343,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Image Editor", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "Flips/Rotate", 0));
         hFlip->setText(QApplication::translate("MainWindow", "Horizonal Flip", 0));
         vFlip->setText(QApplication::translate("MainWindow", "Vertical Flip", 0));
@@ -361,6 +369,7 @@ public:
         groupBox_7->setTitle(QApplication::translate("MainWindow", "Filters", 0));
         filterButton->setText(QApplication::translate("MainWindow", "Choose filter", 0));
         fitCheck->setText(QApplication::translate("MainWindow", "Fit into frame", 0));
+        label->setText(QApplication::translate("MainWindow", "Eduardo Faccin Vernier", 0));
     } // retranslateUi
 
 };

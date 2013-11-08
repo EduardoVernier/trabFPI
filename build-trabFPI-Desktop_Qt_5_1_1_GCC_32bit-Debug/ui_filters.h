@@ -54,6 +54,7 @@ public:
         if (Filters->objectName().isEmpty())
             Filters->setObjectName(QStringLiteral("Filters"));
         Filters->resize(193, 378);
+        Filters->setFocusPolicy(Qt::NoFocus);
         layoutWidget = new QWidget(Filters);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(26, 26, 151, 199));
@@ -170,7 +171,7 @@ public:
 
     void retranslateUi(QWidget *Filters)
     {
-        Filters->setWindowTitle(QApplication::translate("Filters", "Form", 0));
+        Filters->setWindowTitle(QApplication::translate("Filters", "FIlters", 0));
         gaussianButton->setText(QApplication::translate("Filters", "Gaussian", 0));
         LaplacianButton->setText(QApplication::translate("Filters", "Laplacian", 0));
         hPButton->setText(QApplication::translate("Filters", "High-pass Filter", 0));
