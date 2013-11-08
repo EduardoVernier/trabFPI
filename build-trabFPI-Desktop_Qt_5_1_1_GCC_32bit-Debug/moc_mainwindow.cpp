@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[25];
-    char stringdata[521];
+    QByteArrayData data[31];
+    char stringdata[579];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -53,7 +53,13 @@ QT_MOC_LITERAL(20, 442, 11),
 QT_MOC_LITERAL(21, 454, 16),
 QT_MOC_LITERAL(22, 471, 17),
 QT_MOC_LITERAL(23, 489, 16),
-QT_MOC_LITERAL(24, 506, 13)
+QT_MOC_LITERAL(24, 506, 13),
+QT_MOC_LITERAL(25, 520, 11),
+QT_MOC_LITERAL(26, 532, 11),
+QT_MOC_LITERAL(27, 544, 9),
+QT_MOC_LITERAL(28, 554, 14),
+QT_MOC_LITERAL(29, 569, 6),
+QT_MOC_LITERAL(30, 576, 1)
     },
     "MainWindow\0chooseFilter\0\0on_hFlip_clicked\0"
     "on_vFlip_clicked\0on_quatizeButton_clicked\0"
@@ -70,6 +76,8 @@ QT_MOC_LITERAL(24, 506, 13)
     "on_zOutButtton_clicked\0on_applyPHx\0"
     "on_applyGaussian\0on_applyLaplacian\0"
     "on_applyHighPass\0on_applyPHyHx\0"
+    "on_applySHx\0on_applySHy\0on_emboss\0"
+    "on_applyCustom\0float*\0a\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +87,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,31 +95,35 @@ static const uint qt_meta_data_MainWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  129,    2, 0x05,
+       1,    0,  149,    2, 0x05,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,  130,    2, 0x08,
-       4,    0,  131,    2, 0x08,
-       5,    0,  132,    2, 0x08,
-       6,    0,  133,    2, 0x08,
-       7,    0,  134,    2, 0x08,
-       8,    0,  135,    2, 0x08,
-       9,    0,  136,    2, 0x08,
-      10,    0,  137,    2, 0x08,
-      11,    0,  138,    2, 0x08,
-      12,    0,  139,    2, 0x08,
-      13,    0,  140,    2, 0x08,
-      14,    0,  141,    2, 0x08,
-      15,    0,  142,    2, 0x08,
-      16,    0,  143,    2, 0x08,
-      17,    0,  144,    2, 0x08,
-      18,    0,  145,    2, 0x08,
-      19,    0,  146,    2, 0x08,
-      20,    0,  147,    2, 0x0a,
-      21,    0,  148,    2, 0x0a,
-      22,    0,  149,    2, 0x0a,
-      23,    0,  150,    2, 0x0a,
-      24,    0,  151,    2, 0x0a,
+       3,    0,  150,    2, 0x08,
+       4,    0,  151,    2, 0x08,
+       5,    0,  152,    2, 0x08,
+       6,    0,  153,    2, 0x08,
+       7,    0,  154,    2, 0x08,
+       8,    0,  155,    2, 0x08,
+       9,    0,  156,    2, 0x08,
+      10,    0,  157,    2, 0x08,
+      11,    0,  158,    2, 0x08,
+      12,    0,  159,    2, 0x08,
+      13,    0,  160,    2, 0x08,
+      14,    0,  161,    2, 0x08,
+      15,    0,  162,    2, 0x08,
+      16,    0,  163,    2, 0x08,
+      17,    0,  164,    2, 0x08,
+      18,    0,  165,    2, 0x08,
+      19,    0,  166,    2, 0x08,
+      20,    0,  167,    2, 0x08,
+      21,    0,  168,    2, 0x08,
+      22,    0,  169,    2, 0x08,
+      23,    0,  170,    2, 0x08,
+      24,    0,  171,    2, 0x08,
+      25,    0,  172,    2, 0x08,
+      26,    0,  173,    2, 0x08,
+      27,    0,  174,    2, 0x08,
+      28,    1,  175,    2, 0x08,
 
  // signals: parameters
     QMetaType::Bool,
@@ -139,6 +151,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 29,   30,
 
        0        // eod
 };
@@ -172,6 +188,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 20: _t->on_applyLaplacian(); break;
         case 21: _t->on_applyHighPass(); break;
         case 22: _t->on_applyPHyHx(); break;
+        case 23: _t->on_applySHx(); break;
+        case 24: _t->on_applySHy(); break;
+        case 25: _t->on_emboss(); break;
+        case 26: _t->on_applyCustom((*reinterpret_cast< float*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -211,13 +231,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 23;
+        _id -= 27;
     }
     return _id;
 }

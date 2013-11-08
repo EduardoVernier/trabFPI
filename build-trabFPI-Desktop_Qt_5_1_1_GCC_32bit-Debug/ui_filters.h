@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -46,15 +47,16 @@ public:
     QDoubleSpinBox *doubleSpinBox_8;
     QDoubleSpinBox *doubleSpinBox_9;
     QPushButton *pushButton;
+    QCheckBox *embossCB;
 
     void setupUi(QWidget *Filters)
     {
         if (Filters->objectName().isEmpty())
             Filters->setObjectName(QStringLiteral("Filters"));
-        Filters->resize(170, 358);
+        Filters->resize(193, 378);
         layoutWidget = new QWidget(Filters);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 26, 151, 181));
+        layoutWidget->setGeometry(QRect(26, 26, 151, 199));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -98,55 +100,68 @@ public:
         label->setGeometry(QRect(10, 10, 57, 15));
         label_2 = new QLabel(Filters);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(10, 220, 57, 15));
+        label_2->setGeometry(QRect(10, 230, 57, 15));
         doubleSpinBox = new QDoubleSpinBox(Filters);
         doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
-        doubleSpinBox->setGeometry(QRect(10, 240, 51, 24));
+        doubleSpinBox->setGeometry(QRect(10, 250, 61, 24));
         doubleSpinBox->setMinimum(-255);
         doubleSpinBox->setMaximum(255);
+        doubleSpinBox->setSingleStep(0.2);
         doubleSpinBox_2 = new QDoubleSpinBox(Filters);
         doubleSpinBox_2->setObjectName(QStringLiteral("doubleSpinBox_2"));
-        doubleSpinBox_2->setGeometry(QRect(60, 240, 51, 24));
+        doubleSpinBox_2->setGeometry(QRect(70, 250, 61, 24));
         doubleSpinBox_2->setMinimum(-255);
         doubleSpinBox_2->setMaximum(255);
+        doubleSpinBox_2->setSingleStep(0.2);
         doubleSpinBox_3 = new QDoubleSpinBox(Filters);
         doubleSpinBox_3->setObjectName(QStringLiteral("doubleSpinBox_3"));
-        doubleSpinBox_3->setGeometry(QRect(110, 240, 51, 24));
+        doubleSpinBox_3->setGeometry(QRect(130, 250, 61, 24));
         doubleSpinBox_3->setMinimum(-255);
         doubleSpinBox_3->setMaximum(255);
+        doubleSpinBox_3->setSingleStep(0.2);
         doubleSpinBox_4 = new QDoubleSpinBox(Filters);
         doubleSpinBox_4->setObjectName(QStringLiteral("doubleSpinBox_4"));
-        doubleSpinBox_4->setGeometry(QRect(10, 270, 51, 24));
+        doubleSpinBox_4->setGeometry(QRect(10, 280, 61, 24));
         doubleSpinBox_4->setMinimum(-255);
         doubleSpinBox_4->setMaximum(255);
+        doubleSpinBox_4->setSingleStep(0.2);
         doubleSpinBox_5 = new QDoubleSpinBox(Filters);
         doubleSpinBox_5->setObjectName(QStringLiteral("doubleSpinBox_5"));
-        doubleSpinBox_5->setGeometry(QRect(60, 270, 51, 24));
+        doubleSpinBox_5->setGeometry(QRect(70, 280, 61, 24));
         doubleSpinBox_5->setMinimum(-255);
         doubleSpinBox_5->setMaximum(255);
+        doubleSpinBox_5->setSingleStep(0.2);
         doubleSpinBox_6 = new QDoubleSpinBox(Filters);
         doubleSpinBox_6->setObjectName(QStringLiteral("doubleSpinBox_6"));
-        doubleSpinBox_6->setGeometry(QRect(110, 270, 51, 24));
+        doubleSpinBox_6->setGeometry(QRect(130, 280, 61, 24));
         doubleSpinBox_6->setMinimum(-255);
         doubleSpinBox_6->setMaximum(255);
+        doubleSpinBox_6->setSingleStep(0.2);
         doubleSpinBox_7 = new QDoubleSpinBox(Filters);
         doubleSpinBox_7->setObjectName(QStringLiteral("doubleSpinBox_7"));
-        doubleSpinBox_7->setGeometry(QRect(10, 300, 51, 24));
+        doubleSpinBox_7->setGeometry(QRect(10, 310, 61, 24));
         doubleSpinBox_7->setMinimum(-255);
         doubleSpinBox_7->setMaximum(255);
+        doubleSpinBox_7->setSingleStep(0.2);
         doubleSpinBox_8 = new QDoubleSpinBox(Filters);
         doubleSpinBox_8->setObjectName(QStringLiteral("doubleSpinBox_8"));
-        doubleSpinBox_8->setGeometry(QRect(60, 300, 51, 24));
+        doubleSpinBox_8->setGeometry(QRect(70, 310, 61, 24));
         doubleSpinBox_8->setMinimum(-255);
         doubleSpinBox_8->setMaximum(255);
+        doubleSpinBox_8->setSingleStep(0.2);
         doubleSpinBox_9 = new QDoubleSpinBox(Filters);
         doubleSpinBox_9->setObjectName(QStringLiteral("doubleSpinBox_9"));
-        doubleSpinBox_9->setGeometry(QRect(110, 300, 51, 24));
+        doubleSpinBox_9->setGeometry(QRect(130, 310, 61, 24));
         doubleSpinBox_9->setMinimum(-255);
         doubleSpinBox_9->setMaximum(255);
+        doubleSpinBox_9->setSingleStep(0.2);
         pushButton = new QPushButton(Filters);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(80, 330, 80, 23));
+        pushButton->setGeometry(QRect(116, 340, 71, 23));
+        embossCB = new QCheckBox(Filters);
+        embossCB->setObjectName(QStringLiteral("embossCB"));
+        embossCB->setGeometry(QRect(10, 340, 85, 21));
+        embossCB->setCheckable(false);
 
         retranslateUi(Filters);
 
@@ -166,6 +181,7 @@ public:
         label->setText(QApplication::translate("Filters", "Filters", 0));
         label_2->setText(QApplication::translate("Filters", "Custom", 0));
         pushButton->setText(QApplication::translate("Filters", "Apply", 0));
+        embossCB->setText(QApplication::translate("Filters", "Emboss", 0));
     } // retranslateUi
 
 };

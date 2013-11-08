@@ -41,13 +41,15 @@ private slots:
     void on_filterButton_clicked();
     void on_zOutButtton_clicked();
 
-
-public slots:
     void on_applyPHx();
     void on_applyGaussian ();
     void on_applyLaplacian ();
     void on_applyHighPass ();
     void on_applyPHyHx();
+    void on_applySHx();
+    void on_applySHy();
+    void on_emboss();
+    void on_applyCustom(float * a);
 
 
 private:

@@ -166,7 +166,7 @@ void MainWindow::on_grayscaleButton_clicked()
     QImage m = getModified();
     //L = 0.299*R + 0.587*G + 0.114*B
     for (int y = 0; y < m.height()-1; y++)
-        for (int x = 0; x < m.width()-1; x++)
+        for (int x = 0; x < m.width(); x++)
         {
             QRgb px = m.pixel(x,y);
             int gray = qRed(px)*0.299 + qGreen(px)*0.587 + 0.114*qBlue(px);
@@ -524,6 +524,7 @@ void MainWindow::applyFilter (float * values)
             newValue += qRed(m.pixel(x   ,y-1)) * values [7]; //newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
             newValue += qRed(m.pixel(x-1, y-1)) * values [8]; newValue = (newValue < 0) ? 0: newValue; newValue = (newValue>255) ? 255 : newValue;
             QRgb newPx = qRgb (newValue, newValue, newValue);
+
             n.setPixel(x, y, newPx);
         }
     setModified(n);
@@ -570,6 +571,49 @@ void MainWindow::on_applyPHyHx ()
                           0,  0, 0,
                           1,  1, 1};
     applyFilter(values);
+}
+
+void MainWindow::on_applySHx()
+{
+    float values [9] = {  -1,  0,  1,
+                          -2,  0,  2,
+                          -1,  0,  1};
+    applyFilter(values);
+}
+
+
+void MainWindow::on_applySHy()
+{
+    float values [9] = {  -1, -2, -1,
+                           0,  0,  0,
+                           1,  2,  1};
+    applyFilter(values);
+
+}
+
+void MainWindow::on_emboss()
+{
+    QImage m = getModified();
+    uint value;
+    QRgb px,newPx;
+    for (int y = 0; y < m.height()-1; y++)
+        for (int x = 0; x < m.width()-1; x++)
+        {
+            px = m.pixel(x,y);
+            value = 127 + uint (qRed (px));
+            value = (value < 0) ? 0: value; value = (value>255) ? 255 : value;
+            newPx = qRgb (value,value,value);
+            m.setPixel(x,y,newPx);
+        }
+    setModified(m);
+    showImageM(m);
+}
+
+void MainWindow::on_applyCustom(float *a)
+{
+    applyFilter(a);
+
+
 }
 
 
